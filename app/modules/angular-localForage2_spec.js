@@ -23,11 +23,14 @@
     });
 
     it('should resolve a promise', function () {
-      $localForage.getPromise().then(function success(data) {
-        console.log('$localForage.getPromise()', data);
-        expect(data).toBe('OK');
+
+      $rootScope.$apply(function () {
+        $localForage.getPromise().then(function success(data) {
+          console.log('$localForage.getPromise()', data);
+          expect(data).toBe('OK');
+        });
       });
-      $rootScope.$apply();
+
     });
 
     it('should setItem', function () {
