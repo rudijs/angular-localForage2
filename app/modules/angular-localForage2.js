@@ -29,18 +29,20 @@
             //return deferred.promise;
 
             // option 3
-            //var deferred = $q.defer();
-            //$q.when(localforage.setItem('name', 'Mr. Bean')).then(
-            //  function success(data) {
-            //    console.log('localforage.setItem success', data);
-            //    deferred.resolve(data);
-            //  },
-            //  function error(err) {
-            //    console.log('localforage.setItem error', err);
-            //    deferred.reject(err);
-            //  });
-            //return deferred.promise;
-            return $q.when(localforage.setItem('name', 'Mr. Bean'));
+            var deferred = $q.defer();
+            $q.when(localforage.setItem('name', 'Mr. Bean')).then(
+              function success(data) {
+                console.log('localforage.setItem success', data);
+                deferred.resolve(data);
+              },
+              function error(err) {
+                console.log('localforage.setItem error', err);
+                deferred.reject(err);
+              });
+            return deferred.promise;
+
+            // option 4
+            //return $q.when(localforage.setItem('name', 'Mr. Bean'));
 
           };
 
